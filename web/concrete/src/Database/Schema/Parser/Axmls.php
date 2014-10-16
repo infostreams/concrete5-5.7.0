@@ -100,6 +100,14 @@ class Axmls extends XmlParser
                 $options['length'] = $size;
             }
         }
+        switch ($type) {
+            case 'X':
+                $options['length'] = 4000;
+                break;
+            case 'C':
+                $options['length'] = 255;
+                break;
+        }
         if ($column->unsigned || $column->UNSIGNED) {
             $options['unsigned'] = true;
         }
@@ -174,7 +182,7 @@ class Axmls extends XmlParser
             return 'float';
         }
         if ($type == 'X') {
-            return 'text';
+            return 'string';
         }
         if ($type == 'XL') {
             return 'text';
